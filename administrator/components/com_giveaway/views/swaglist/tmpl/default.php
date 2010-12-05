@@ -34,8 +34,8 @@ JToolBarHelper::addNew();
 				<td>
 					<?php echo $checkbox; ?>
 				</td>
-				<td><a href="<?php echo $link; ?>"><?php echo $row->attendee_id ?></a></td>
-				<td><?php echo $row->name ?></td>
+				<td><a href="<?php echo $link; ?>"><?php echo $row->swag_name ?></a></td>
+				<td><?php echo $row->attendee_name ?></td>
 			</tr>
 			<?php
 				$k = 1 - $k;

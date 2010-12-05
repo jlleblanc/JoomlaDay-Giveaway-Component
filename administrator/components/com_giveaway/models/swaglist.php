@@ -11,7 +11,9 @@ class GiveawayModelSwaglist extends JModel
 	{
 		if (!isset($this->swag))
 		{
-			$query = "SELECT attendee_id, name, swag_id FROM #__giveaway_swag";
+			$query = "SELECT s.name AS swag_name, s.swag_id, a.name AS attendee_name "
+					."FROM #__giveaway_swag AS s "
+					."LEFT JOIN #__giveaway_attendee AS a USING(attendee_id) ";
 			$this->swag = $this->_getList($query);
 		}
 	
