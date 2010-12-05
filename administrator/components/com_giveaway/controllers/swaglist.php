@@ -52,6 +52,22 @@ class GiveawayControllerSwaglist extends JController
 	
 		$this->setRedirect( 'index.php?option=com_giveaway&controller=swaglist', "Swag{$s} Deleted" );
 	}
+
+	public function import()
+	{
+		JRequest::checkToken() or jexit( 'Invalid Token' );
+
+		$giveaways = JRequest::getString('giveaways', '');
+		$giveaways = explode("\n", $giveaways);
+
+		foreach ($giveaways as $giveaway) {
+			$row = JTable::getInstance('giveaway_swag', 'Table');
+			$row->name = $giveaway;
+			$row->store();
+		}
+
+		$this->setRedirect('index.php?option=com_giveaway&view=swaglist', 'Swag Imported');
+	}
 	
 	function display()
 	{

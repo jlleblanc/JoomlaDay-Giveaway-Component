@@ -15,8 +15,8 @@ JToolBarHelper::addNew();
 				<th width="20">
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->swag ); ?>);" />
 				</th>
-				<th class="title">Attendee_id</th>
-				<th>Name</th>
+				<th class="title">Attendee</th>
+				<th>Giveaway Item</th>
 			</tr>
 		</thead>
 		
@@ -49,4 +49,22 @@ JToolBarHelper::addNew();
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<?php echo JHTML::_( 'form.token' ); ?>
+</form>
+<p>&nbsp;</p>
+<form action="index.php" method="post" accept-charset="utf-8">
+	<fieldset id="import_attendees" class="adminform">
+		<legend>Import Giveaways</legend>
+
+		<p><strong>Instructions:</strong> List the names of each item. For multiple instance of the same item, list the item multiple times</p>
+
+		<textarea name="giveaways" rows="15" cols="80"></textarea>
+
+		<p><input type="submit" value="Import"></p>
+		<input type="hidden" name="controller" value="swaglist" />
+		<input type="hidden" name="option" value="com_giveaway" />
+		<input type="hidden" name="task" value="import" />
+		<input type="hidden" name="boxchecked" value="0" />
+		<?php echo JHTML::_( 'form.token' ); ?>
+	</fieldset>
+	
 </form>
