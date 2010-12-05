@@ -50,3 +50,25 @@ JToolBarHelper::addNew();
 	<input type="hidden" name="boxchecked" value="0" />
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
+<p>&nbsp;</p>
+<form action="index.php" method="post" accept-charset="utf-8">
+	<fieldset id="import_attendees" class="adminform">
+		<legend>Import Attendees</legend>
+
+		<p><strong>Instructions:</strong> List the names and email addresses of attendees separated by commas, one per line. Example:</p>
+		<pre>
+			Joe Smith,joesmith@example.com
+			Jane Anderson,janeanderson@example.com
+		</pre>
+
+		<textarea name="attendees" rows="15" cols="80"></textarea>
+
+		<p><input type="submit" value="Import"></p>
+		<input type="hidden" name="controller" value="attendeelist" />
+		<input type="hidden" name="option" value="com_giveaway" />
+		<input type="hidden" name="task" value="import" />
+		<input type="hidden" name="boxchecked" value="0" />
+		<?php echo JHTML::_( 'form.token' ); ?>
+	</fieldset>
+
+</form>

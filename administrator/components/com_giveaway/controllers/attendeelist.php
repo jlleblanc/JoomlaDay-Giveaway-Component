@@ -52,7 +52,29 @@ class GiveawayControllerAttendeelist extends JController
 	
 		$this->setRedirect( 'index.php?option=com_giveaway&controller=attendeelist', "Attendee{$s} Deleted" );
 	}
-	
+
+	public function import()
+	{
+		JRequest::checkToken() or jexit( 'Invalid Token' );
+
+		$attendees = JRequest::getString('attendees', '');
+		$attendees = explode("\n", $attendees);
+
+		foreach ($attendees as $attendee) {
+			$attendee = explode(",", $attendee);
+
+			// Must have both a name and an email address
+			if (isset($attendee[1])) {
+				$row = JTable::getInstance('giveaway_attendee', 'Table');
+				$row->name = trim($attendee[0]);
+				$row->email = trim($attendee[1]);
+				$row->store();
+			}
+		}
+
+		$this->setRedirect('index.php?option=com_giveaway&view=attendeelist', 'Attendees Imported');
+	}
+
 	function display()
 	{
 		$view = JRequest::getVar('view', '');
