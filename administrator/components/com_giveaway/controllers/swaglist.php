@@ -62,7 +62,7 @@ class GiveawayControllerSwaglist extends JController
 
 		foreach ($giveaways as $giveaway) {
 			$row = JTable::getInstance('giveaway_swag', 'Table');
-			$row->name = $giveaway;
+			$row->name = trim($giveaway);
 			$row->store();
 		}
 
