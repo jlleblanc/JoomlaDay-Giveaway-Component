@@ -1,17 +1,25 @@
-<?php defined( '_JEXEC' ) or die( 'Restricted access' ); ?>
+<?php
+defined( '_JEXEC' ) or die( 'Restricted access' );
+
+JHTML::_('behavior.mootools');
+
+$document = JFactory::getDocument();
+$document->addStyleSheet(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl/default.css');
+$document->addScript(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl/default.js');
+
+?>
 <table id="swaglist">
 	<thead>
 		<tr>
-			<th>attendee_id</th>
-			<th>Name</th>
+			<th>Item</th>
+			<th>Winner</th>
 		</tr>
 	</thead>
 	<tbody>
 	<?php foreach ($this->swag as $row): ?>
-		<?php $link = JRoute::_('index.php?option=com_giveaway&amp;view=swag&amp;id='. $row->swag_id); ?>
 		<tr>
-			<td><a href="<?php echo $link; ?>"><?php echo $row->attendee_id ?></a></td>
 			<td><?php echo $row->name ?></td>
+			<td><span class="select_winner" rel="<?php echo $row->swag_id ?>">-select-</span></td>
 		</tr>
 	<?php endforeach ?>
 	</tbody>
