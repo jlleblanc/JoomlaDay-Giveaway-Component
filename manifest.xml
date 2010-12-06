@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
 <install type="component" version="1.5.0">
-	<name>giveaway</name>
+	<name>Giveaway</name>
 	<creationDate>12/05/10</creationDate>
 	<author>Joe LeBlanc</author>
 	<authorEmail>contact@jlleblanc.com</authorEmail>
 	<copyright>© 2010</copyright>
-	<license>GPL</license>
+	<license>GPLv2</license>
 	<version>1.0</version>
-	<description></description>
-	<menu link="option=com_giveaway">Giveaway</menu>
-	<files folder="site">
+	<description>A component to handle giveaways for JoomlaDays</description>
+	<menu link="option=com_giveaway">JoomlaDay Giveaway</menu>
+	<files folder="components/com_giveaway">
 		<folder>models</folder>
 		<filename>giveaway.php</filename>
 		<filename>controller.php</filename>
@@ -28,12 +28,12 @@
 		</sql>
 	</uninstall>
 	<administration>
-		<menu>Giveaway</menu>
+		<menu>JoomlaDay Giveaway</menu>
 		<submenu>
 			<menu link="option=com_giveaway&amp;view=attendeelist">Attendee List</menu>
 			<menu link="option=com_giveaway&amp;view=swaglist">Swag List</menu>
 		</submenu>
-		<files folder="admin">
+		<files folder="administrator/components/com_giveaway">
 			<filename>install.mysql.sql</filename>
 			<filename>uninstall.mysql.sql</filename>
 			<filename>giveaway.php</filename>
