@@ -19,7 +19,12 @@ $document->addScript(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl
 	<?php foreach ($this->swag as $row): ?>
 		<tr>
 			<td><?php echo $row->name ?></td>
-			<td><span class="select_winner" rel="<?php echo $row->swag_id ?>">-select-</span></td>
+			<td><?php if ($row->attendee_name): ?>
+				<?php echo $row->attendee_name ?>
+				<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($row->email)) ?>?r=g" />
+			<?php else: ?>
+				<span class="select_winner" rel="<?php echo $row->swag_id ?>">-select-</span></td>
+			<?php endif ?>
 		</tr>
 	<?php endforeach ?>
 	</tbody>
