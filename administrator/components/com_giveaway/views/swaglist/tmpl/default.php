@@ -7,6 +7,11 @@ JToolBarHelper::deleteList();
 JToolBarHelper::editList();
 JToolBarHelper::addNew();
 
+$document = JFactory::getDocument();
+$document->addScript(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl/default.js');
+$document->addStyleSheet(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl/default.css');
+
+
 ?>
 <p><a href="index.php?option=com_giveaway&amp;view=swaglist&amp;format=raw">Download CSV</a></p>
 <form action="index.php" method="post" name="adminForm">
@@ -17,8 +22,7 @@ JToolBarHelper::addNew();
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->swag ); ?>);" />
 				</th>
 				<th class="title">Giveaway Item</th>
-				<th>Attendee</th>
-				<th>Attendee Email</th>
+				<th>Winner</th>
 			</tr>
 		</thead>
 		
@@ -37,8 +41,14 @@ JToolBarHelper::addNew();
 					<?php echo $checkbox; ?>
 				</td>
 				<td><a href="<?php echo $link; ?>"><?php echo $row->swag_name ?></a></td>
-				<td><?php echo $row->attendee_name ?></td>
-				<td><a href="mailto:<?php echo $row->email ?>"><?php echo $row->email ?></a></td>
+				<td>
+				<?php if ($row->attendee_name): ?>
+					<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower($row->email)) ?>?r=g" />
+					<p><?php echo $row->attendee_name ?></p>
+				<?php else: ?>
+					<span class="select_winner" rel="<?php echo $row->swag_id ?>">-select-</span>
+				<?php endif ?>
+				</td>
 			</tr>
 			<?php
 				$k = 1 - $k;
