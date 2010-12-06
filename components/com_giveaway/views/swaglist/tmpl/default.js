@@ -14,7 +14,7 @@ window.addEvent('domready', function () {
 		});
 
 		randomAjax.addEvent('onComplete', function (data) {
-			clicked_element.setHTML(data);
+			clicked_element.getParent().setHTML(data);
 		});
 
 		randomAjax.request();
