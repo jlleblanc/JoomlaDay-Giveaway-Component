@@ -8,6 +8,7 @@ JToolBarHelper::editList();
 JToolBarHelper::addNew();
 
 ?>
+<p><a href="index.php?option=com_giveaway&amp;view=swaglist&amp;format=raw">Download CSV</a></p>
 <form action="index.php" method="post" name="adminForm">
 	<table class="adminlist">
 		<thead>
