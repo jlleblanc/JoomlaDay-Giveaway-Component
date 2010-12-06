@@ -10,6 +10,8 @@ class GiveawayViewRandom_attendee extends JView
 		$random = $this->get('random');
 		$this->assign('random', $random);
 
+		$this->get('MarkRandom');
+
 		parent::display($tpl);
 	}
 }

@@ -26,4 +26,25 @@ class GiveawayModelRandom_attendee extends JModel
 
 		return $this->random;
 	}
+
+	/**
+	 * Poor choice of terminology, because this is a quick and dirty way of
+	 * doing it.
+	 *
+	 * @return void
+	 * @author Joseph LeBlanc
+	 */
+	public function getMarkRandom()
+	{
+		$swag_id = JRequest::getInt('swag_id', 0);
+
+		$random = $this->getRandom();
+
+		$query = "UPDATE #__giveaway_swag SET attendee_id = '{$random->attendee_id}' "
+				."WHERE swag_id = '{$swag_id}'";
+
+		$database = JFactory::getDBO();
+		$database->setQuery($query);
+		$database->query();
+	}
 }
