@@ -15,8 +15,9 @@ JToolBarHelper::addNew();
 				<th width="20">
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->swag ); ?>);" />
 				</th>
-				<th>Giveaway Item</th>
-				<th class="title">Attendee</th>
+				<th class="title">Giveaway Item</th>
+				<th>Attendee</th>
+				<th>Attendee Email</th>
 			</tr>
 		</thead>
 		
@@ -36,6 +37,7 @@ JToolBarHelper::addNew();
 				</td>
 				<td><a href="<?php echo $link; ?>"><?php echo $row->swag_name ?></a></td>
 				<td><?php echo $row->attendee_name ?></td>
+				<td><a href="mailto:<?php echo $row->email ?>"><?php echo $row->email ?></a></td>
 			</tr>
 			<?php
 				$k = 1 - $k;
