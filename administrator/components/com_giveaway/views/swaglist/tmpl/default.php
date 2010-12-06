@@ -15,8 +15,8 @@ JToolBarHelper::addNew();
 				<th width="20">
 					<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->swag ); ?>);" />
 				</th>
-				<th class="title">Attendee</th>
 				<th>Giveaway Item</th>
+				<th class="title">Attendee</th>
 			</tr>
 		</thead>
 		
