@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+
+		<param name="email_subject" size="30" type="text" default="" label="Email Subject" description="Subject of the email that is sent to winners" />
+		<param name="email_message" type="textarea" rows="10" cols="40" default="" label="Email Text" description="Content of the email that is sent to winners" />
+		<param name="email_fromname" size="30" type="text" default="" label="From Name" description="" />
+		<param name="email_fromemail" size="30" type="text" default="" label="From Email" description="" />
+
+	</params>
+</config>
