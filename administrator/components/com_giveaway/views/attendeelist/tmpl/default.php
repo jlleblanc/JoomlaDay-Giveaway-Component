@@ -6,6 +6,7 @@ JToolBarHelper::title( 'Attendee List' );
 JToolBarHelper::deleteList();
 JToolBarHelper::editList();
 JToolBarHelper::addNew();
+JToolBarHelper::preferences('com_giveaway', 400, 600);
 
 ?>
 <form action="index.php" method="post" name="adminForm">

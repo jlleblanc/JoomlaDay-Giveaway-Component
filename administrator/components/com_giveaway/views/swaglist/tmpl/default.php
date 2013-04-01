@@ -3,9 +3,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 JToolBarHelper::title( 'Swag List' );
 
+JToolBarHelper::custom('simulate', 'assign', 'assign', 'Simulate Email', false);
+JToolBarHelper::custom('sendemail', 'assign', 'assign', 'Send Gifts!', false);
+JToolBarHelper::custom('randomassign', 'assign', 'assign', 'Random Assign', false);
 JToolBarHelper::deleteList();
 JToolBarHelper::editList();
 JToolBarHelper::addNew();
+JToolBarHelper::preferences('com_giveaway', 400, 600);
 
 $document = JFactory::getDocument();
 $document->addScript(JURI::base() . 'components/com_giveaway/views/swaglist/tmpl/default.js');
@@ -13,6 +17,28 @@ $document->addStyleSheet(JURI::base() . 'components/com_giveaway/views/swaglist/
 
 
 ?>
+<script>
+function submitbutton(task) {
+	if (task == 'simulate') {
+		var simulate_email = prompt('This will send all the gift emails to a single email address.\nPlease enter email to which send the simulated emails');
+		if (simulate_email == null) {
+			alert('Need an email address to simulate');
+			return false;
+		}
+		
+		document.forms[0].simulateemail.value = simulate_email;
+	}
+	
+	if (task == 'sendemail') {
+		var confirmed = confirm('Send email to all winners? \nYou cannot call back a sent email.');
+		if (!confirmed) {
+			return false;
+		}
+	}
+	
+	submitform( task );
+}
+</script>
 <p><a href="index.php?option=com_giveaway&amp;view=swaglist&amp;format=raw">Download CSV</a></p>
 <form action="index.php" method="post" name="adminForm">
 	<table class="adminlist">
@@ -61,6 +87,7 @@ $document->addStyleSheet(JURI::base() . 'components/com_giveaway/views/swaglist/
 	<input type="hidden" name="option" value="com_giveaway" />
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
+	<input type="hidden" name="simulateemail" value="" />
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
 <p>&nbsp;</p>
