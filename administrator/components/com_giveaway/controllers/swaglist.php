@@ -100,16 +100,15 @@ class GiveawayControllerSwaglist extends JController
 		echo '<table width="100%">';
 		echo '<tr><th align="left">Attendee Name</th><th align="left">Attendee Email</th><th align="left">Swag</th><th align="left">Status</th></tr>';
 		foreach ($swagrows as $swagrow) {
-			$recipient = $winneremail ? $winneremail : $swagrow['email'];
-			//$recipient = $winneremail ? $winneremail : 'parth.lawate@tekdi.net';
 			$text = $body;
+			$recipient = $winneremail ? $winneremail : $swagrow['email'];
+
 			foreach ($swagrow as $k=>$v) {
 				$text = str_replace('{'.$k.'}', $v, $text);
 			}
 
-			//JUtility::sendmail($fronemail, $fromname, $recipient, $subject, $text);
 			$done = JUtility::sendmail($fronemail, $fromname, $recipient, $subject, $text);
-			$status = $done ? 'Mail Sent' : 'Mail not sent';
+			$status = $done ? JText::_('Mail Sent') : JText::_('Mail not sent');
 			echo '<tr><td>'.$swagrow['attendee_name'].'</td><td>'.$recipient.'</td>';
 			echo '<td>'.$swagrow['swagname'].'</td><td>'.$status.'</td></tr>';
 		}
